@@ -1,1 +1,0 @@
-Some C++ program samples
