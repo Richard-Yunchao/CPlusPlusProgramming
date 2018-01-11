@@ -1,0 +1,21 @@
+This example showed how to use:
+1) friend class;
+2) template;
+
+friend class:
+When you want to access to a private variable in a class A (say "Node" in the
+example) from another class B (say "Stack"), you need to add class B as a
+friend class in class A's definition: see the code on line 25.
+
+In addition, you may need to declare class B before class A (like the code on
+line 5), so class A can recoginze class B.
+
+template:
+When template is added into class B, it might be a little bit complex.
+For example, when you declare class B at line 5, you need to add the template
+before the declaration, see the code on line 4.
+
+Meanwhile, you need to add
+the template type with <> for the friend class declaration, see the code on
+line 25:
+"friend class Stack" -> "friend class Stack<Data>"

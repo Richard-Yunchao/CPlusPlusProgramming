@@ -1,0 +1,47 @@
+This example showed how to use:
+1) friend class;
+2) template;
+
+Friend class:
+When you want to access to a private variable in a class A (say "Node" in the
+example) from another class B (say "Stack"), you need to add class B as a
+friend class in class A's definition: see the code on line 25.
+
+In addition, you may need to declare class B before class A (like the code on
+line 5), so class A can recoginze class B.
+
+Template:
+When template is added into class B, it might be a little bit complex.
+For example, when you declare class B at line 5, you need to add the template
+before the declaration, see the code on line 4.
+
+Meanwhile, you need to add
+the template type with <> for the friend class declaration, see the code on
+line 25:
+    "friend class Stack" -> "friend class Stack<Data>"
+
+If you separate the function definition and function declaration (for example,
+you declare the functions in class without implementation, then define these
+functions later in the same file or in another file), then you need to add
+template before each function definition, and you need to add the template type
+in class name, for example:
+
+If a class is not defined on top of template, then its constructor is like this:
+    Stack::Stack() { /* your code here */ }
+
+If a class is defined on top of template, then its constructor is like this:
+    template <class Data>
+    Stack<Data>::Stack () { /* your code here */ }
+
+And apply this to all functions of a class.
+
+Actually, when a class is declared on top of template, every time you define
+a function of that class or declare an object/instance of that class, you
+need to add the template. For example, if "Stack" class is not on top of
+template, when you declare a pointer to Stack object, it is like this:
+    Stack* pointer;
+However, if "Stack" class is on top of template, it is like this in "Stack"'s
+function definition or in other class definition:
+    Stack<Node>* pointer;
+Or you specify the exact type for template in your application:
+    Stack<unsigned int>* pointer;
